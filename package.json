@@ -1,0 +1,35 @@
+{
+  "name": "professional-master-detail-app",
+  "version": "2.0.0",
+  "description": "Professional master-detail web application with security testing",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "jest",
+    "test:selenium": "node selenium-test.js",
+    "test:selenium-final": "node tests/selenium-final-test.js",
+    "test:selenium-simple": "node tests/selenium-simple-test.js",
+    "test:selenium-advanced": "node tests/selenium-advanced-test.js",
+    "test:selenium-demo": "node selenium-demo-public.js",
+    "test:security": "node tests/security-test.js",
+    "test:all": "npm run test:selenium-final"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "selenium-webdriver": "^4.38.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}

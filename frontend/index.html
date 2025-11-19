@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Master-Detail App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login/Register Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="auth-title">Login</h2>
+            <form id="auth-form">
+                <div class="form-group">
+                    <label for="auth-username">Username:</label>
+                    <input type="text" id="auth-username" required autocomplete="username">
+                </div>
+                <div class="form-group" id="email-group" style="display: none;">
+                    <label for="auth-email">Email:</label>
+                    <input type="email" id="auth-email" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="auth-password">Password:</label>
+                    <input type="password" id="auth-password" required autocomplete="current-password">
+                </div>
+                <div id="auth-error" class="error-message"></div>
+                <div class="form-actions">
+                    <button type="submit" id="auth-submit-btn">Login</button>
+                    <button type="button" id="auth-toggle-btn">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🛍️ Professional Inventory System</h1>
+            <div id="user-info" class="hidden">
+                <span id="username-display"></span>
+                <button id="logout-btn" class="btn-secondary">Logout</button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Filters Section -->
+            <section id="filters-section">
+                <h3>Filters</h3>
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="filter-category">Category:</label>
+                        <select id="filter-category">
+                            <option value="">All</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="food">Food</option>
+                            <option value="books">Books</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-search">Search:</label>
+                        <input type="text" id="filter-search" placeholder="Search items...">
+                    </div>
+                    <button id="apply-filters-btn" class="btn-primary">Apply Filters</button>
+                    <button id="clear-filters-btn" class="btn-secondary">Clear</button>
+                </div>
+            </section>
+
+            <div class="main-content">
+                <section id="master-section">
+                    <div class="section-header">
+                        <h2>Items List</h2>
+                        <button id="add-item-btn" class="btn-primary hidden">+ Add New Item</button>
+                    </div>
+                    <div id="items-list-container">
+                        <ul id="items-list"></ul>
+                        <div id="pagination" class="pagination hidden"></div>
+                    </div>
+                </section>
+                
+                <section id="detail-section" class="hidden">
+                    <h2>Item Details</h2>
+                    <form id="item-form">
+                        <input type="hidden" id="item-id">
+                        
+                        <div class="form-group">
+                            <label for="item-name">Name: *</label>
+                            <input type="text" id="item-name" required maxlength="100">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="item-description">Description: *</label>
+                            <textarea id="item-description" required maxlength="500" rows="4"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="item-category">Category:</label>
+                                <select id="item-category">
+                                    <option value="electronics">Electronics</option>
+                                    <option value="clothing">Clothing</option>
+                                    <option value="food">Food</option>
+                                    <option value="books">Books</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="item-price">Price ($):</label>
+                                <input type="number" id="item-price" min="0" step="0.01" value="0">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="item-stock">Stock:</label>
+                                <input type="number" id="item-stock" min="0" value="0">
+                            </div>
+                        </div>
+                        
+                        <div id="form-error" class="error-message"></div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">💾 Save</button>
+                            <button type="button" id="cancel-btn" class="btn-secondary">❌ Cancel</button>
+                            <button type="button" id="delete-btn" class="btn-danger">🗑️ Delete</button>
+                        </div>
+                    </form>
+                    
+                    <div id="item-metadata" class="metadata hidden">
+                        <p><strong>Created by:</strong> <span id="created-by"></span></p>
+                        <p><strong>Created at:</strong> <span id="created-at"></span></p>
+                        <p><strong>Updated at:</strong> <span id="updated-at"></span></p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <div id="toast" class="toast hidden"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
